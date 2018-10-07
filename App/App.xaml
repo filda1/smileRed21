@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:infra="clr-namespace:smileRed21.Infrastructure"
+             x:Class="smileRed21.App">
+
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <infra:InstanceLocator x:Key="Locator"/>
+
+            <!-- Pallete -->
+            <Color x:Key="primary-back-title-color">#dd1021</Color>
+            <Color x:Key="primary-title-color">#ffffff</Color>
+            <!-- Pallete-end  -->
+            <Style ApplyToDerivedTypes="true" TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Key=primary-back-title-color}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource Key=primary-title-color}"/>
+            </Style>
+
+            <!-- Colors -->
+            <!-- Red Dark -->
+            <Color x:Key="MainColor">#c60e1d</Color>
+            <Color x:Key="TitleMainColor">#840913</Color>
+            <!-- Red  -->
+            <Color x:Key="BackgroundColor">#dd1021</Color>
+            <!-- Font Black -->
+            <Color x:Key="FontColor">#000</Color>
+            <!-- Font White -->
+            <Color x:Key="FontColor1">#FFF</Color>
+            <!-- Orange -->
+            <Color x:Key="AccentColor1">#ef982b</Color>
+            <!-- Yellow -->
+            <Color x:Key="AccentColor2">#FFC300</Color>
+
+
+            <x:String x:Key="formatcurrencypt">{0:0,0}</x:String>
+            <!--  <x:String x:Key="formatcurrencyusa">{0:$#,##0.00;($#,##0.00);Zero}</x:String>  -->
+
+            <!-- URL -->
+            <x:String x:Key="APIsmileRed">http://restcountries.eu</x:String>
+            <x:String x:Key="APISecurity">http://aurora.somee.com</x:String>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
