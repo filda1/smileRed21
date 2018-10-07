@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             xmlns:i18n="clr-namespace:smileRed21.Helpers"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="smileRed21.Views.FullAddress">
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Frame CornerRadius="10" Padding="0" BackgroundColor="#c60e1d" >
+                <StackLayout
+             Padding="29,70,29,10">
+                    <Label
+                    Text="{i18n:Translate EnterDataLabel}" 
+                    TextColor="Black"
+                    FontSize="26"
+                    FontAttributes="Bold"
+                    Margin="0,0,0,38"
+                    FontFamily="Roboto"                   
+                    />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                   x:Name="AddressLabel"     
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Text="Address" 
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                   x:Name="PAddressLabel"    
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"                   
+                   TextColor="Black">
+                        </Entry>
+                        <Label
+                   x:Name="CodePostalLabel"    
+                   Grid.Column="0"                             
+                   Grid.Row="1"
+                   Text="{i18n:Translate CodePostalLabel}" 
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry 
+                   x:Name="PCodePostalLabel"
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"       
+                   TextColor="Black">
+                        </Entry>
+                        <Label
+                   x:Name="DoorLabel"
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   Text="{i18n:Translate DoorLabel}" 
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry 
+                   x:Name="PDoorLabel"
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"       
+                   TextColor="Black">
+                        </Entry>
+                        <Label
+                   x:Name="LocationLabel"     
+                   Grid.Column="0"
+                   Grid.Row="3"
+                   Text="{i18n:Translate LocationLabel}" 
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry 
+                   x:Name="PLocationLabel"
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="3"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"       
+                   TextColor="Black">
+                        </Entry>
+                    </Grid>
+                    <Button
+                    x:Name="Accept"
+                    BackgroundColor="#FFC300"                  
+                    Clicked="Accept_Cliked"
+                    HeightRequest="55"
+                    IsEnabled="{Binding IsEnable,Mode=TwoWay}"                 
+                    Text="{i18n:Translate Ok}" 
+                    TextColor="White">
+                    </Button>
+                    <Button
+                    x:Name="Close"
+                    Clicked="Close_Cliked"    
+                    BackgroundColor="#ef982b"                 
+                    HeightRequest="55"
+                    IsEnabled="{Binding IsEnable,Mode=TwoWay}"                 
+                    Text="{i18n:Translate CloseLabel}" 
+                    TextColor="White">
+                    </Button>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</pages:PopupPage>

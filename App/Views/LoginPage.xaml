@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             x:Class="smileRed21.Views.LoginPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             xmlns:i18n="clr-namespace:smileRed21.Helpers"       
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+    
+    <ContentPage.Content>
+        <ScrollView 
+            BindingContext="{Binding Login}">
+            <AbsoluteLayout>
+                <StackLayout Padding="29,69,29,5"
+                 AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                 AbsoluteLayout.LayoutFlags="All">
+                    <Image
+                    Source="Tasty.png"
+                    HeightRequest="140"
+                    WidthRequest="183"
+                    HorizontalOptions="CenterAndExpand">
+                    </Image>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Entry                        
+                        Grid.Row="0" 
+                        Placeholder="{i18n:Translate EMail}" 
+                        Text="{Binding Email, Mode=TwoWay}" 
+                        PlaceholderColor="#bababa"  
+                        BackgroundColor="White" 
+                        FontFamily="Rambla" 
+                        FontSize="17"
+                        HeightRequest="48"/>
+                        <Entry                        
+                        Grid.Row="1" 
+                        Placeholder="{i18n:Translate Password}"  
+                        Text="{Binding Password, Mode=TwoWay}" 
+                        IsPassword="true" 
+                        PlaceholderColor="#bababa"  
+                        BackgroundColor="White" 
+                        FontFamily="Enriqueta"                        
+                        FontSize="17"
+                        HeightRequest="48"/>
+                    </Grid>
+                    <StackLayout>
+                        <Button 
+                       Command="{Binding LoginCommand}"
+                       Text="{i18n:Translate LoginLabel}"                                                            
+                       IsEnabled="{Binding IsEnabled, Mode=TwoWay}" 
+                       BackgroundColor="#FFC300" 
+                       TextColor="White"                                                           
+                       FontFamily="Enriqueta" 
+                       FontAttributes="Bold" 
+                       FontSize="17"
+                       BorderRadius="0"/>
+                    </StackLayout>
+                    <StackLayout >
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button
+                       Command="{Binding HelpCommand}"
+                       Text="{i18n:Translate Enter}"   
+                       IsEnabled="{Binding IsEnabled, Mode=TwoWay}"      
+                       Grid.Row="0"
+                       Grid.Column="0"                                          
+                       BackgroundColor="#ef982b" 
+                       TextColor="White"                                         
+                       FontFamily="Enriqueta" 
+                       FontAttributes="Bold" 
+                       FontSize="Medium"
+                       BorderRadius="0"/>
+                            <Button
+                       Command="{Binding RegisterCommand}"
+                       IsEnabled="{Binding IsEnabled, Mode=TwoWay}"      
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       Text="{i18n:Translate Register2}"                            
+                       BackgroundColor="#ef982b"
+                       TextColor="White"                      
+                       FontFamily="Enriqueta" 
+                       FontAttributes="Bold" 
+                       FontSize="Medium"
+                       BorderRadius="0"></Button>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout Padding="0,0,0,100"/>
+                    <StackLayout Orientation="Horizontal" Padding="140,0,140,0">
+                        <Image Source="face.png"  HeightRequest="20"/>
+                        <Image Source="logo.png"  HeightRequest="20"/>
+                    </StackLayout>
+                </StackLayout>
+                <ActivityIndicator
+                    AbsoluteLayout.LayoutBounds=".5,.5,.5,.5" 
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand"
+                    Color="BlueViolet">
+                </ActivityIndicator>
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

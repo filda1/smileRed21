@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="smileRed21.Views.EditNewAddressPage">
+
+    <StackLayout 
+      BindingContext="{Binding EditNewAddress}" 
+        VerticalOptions="Center"  Padding="20,0" HorizontalOptions="FillAndExpand" >
+        <Frame CornerRadius="10" Padding="0" BackgroundColor="CadetBlue" >
+            <StackLayout Padding="10">
+                <Label  
+                    x:Name="Caption" TextColor="Black" FontSize="20" HorizontalOptions="Center"></Label>
+                <ScrollView>
+                    <StackLayout>
+                        <StackLayout Margin="0,-5,0,0" >
+                            <Label
+                                Text="Edit Address:"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                />
+                            <Entry
+                   x:Name="Entry1"
+                   BackgroundColor="CadetBlue"
+                   WidthRequest="320"
+                   HeightRequest ="50"                                    
+                   TextColor="Black" 
+                   PlaceholderColor="White"
+                   Text ="{Binding User.Address, Mode=TwoWay}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Margin="70,10,0,0">
+                            <Button 
+                                x:Name="Accept" 
+                                Text="Save"
+                                TextColor="Orange" 
+                                FontSize="Micro" 
+                                FontAttributes="Bold"
+                                Command="{Binding OkNewAddressCommand}"
+                                IsEnabled="{Binding IsEnable,Mode=TwoWay}"/>
+                            <Button 
+                                x:Name="Close"  
+                                Text="Close" 
+                                TextColor="Red"  
+                                FontSize="Micro" 
+                                FontAttributes="Bold"
+                                Command="{Binding CancelNewAddressCommand}"
+                                IsEnabled="{Binding IsEnable,Mode=TwoWay}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </StackLayout>
+</pages:PopupPage>
