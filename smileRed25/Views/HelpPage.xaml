@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
+             xmlns:i18n="clr-namespace:smileRed25.Helpers"    
+             x:Class="smileRed25.Views.HelpPage"
+             Title="{i18n:Translate Help}">
+
+    <ScrollView
+           BindingContext="{Binding Login}" >
+        <StackLayout>
+            <Frame OutlineColor="LightGray" HasShadow="True" Margin="9,10,5,0" >
+                <StackLayout Orientation="Horizontal" Padding="9,10,10,10" Spacing="100">
+                    <Label
+                        Text= "{i18n:Translate RemenberLabel}"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Switch
+                        IsToggled="{Binding IsRemembered, Mode=TwoWay}"
+                        HorizontalOptions="End">
+                    </Switch>
+                </StackLayout>
+            </Frame>
+            <Frame OutlineColor="LightGray" HasShadow="True" Margin="9,0,5,0" >
+                <StackLayout Orientation="Horizontal" Padding="9,10,10,10" Spacing="100">
+                    <Label
+                HorizontalOptions="Start"
+                Text= "{i18n:Translate PasswordRecoveryLabel}"
+                TextColor="#b7295a">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Button_Open"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

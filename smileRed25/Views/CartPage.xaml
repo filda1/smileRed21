@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             xmlns:i18n="clr-namespace:smileRed25.Helpers" 
+             BackgroundColor ="#f3463a"
+             x:Class="smileRed25.Views.CartPage"
+             Title="{i18n:Translate CartLabel}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+                x:Name="ToolOrderID"                            
+                Priority="0" Order="Primary"/>
+        <ToolbarItem 
+                x:Name= "ToolIcon"  
+                Clicked= "ClikedBarCart"
+                Priority="0" Order="Primary"/>
+        <ToolbarItem Text ="{i18n:Translate ContactLabel}" 
+                Priority="0" Order="Secondary"/>
+        <ToolbarItem Text ="{i18n:Translate MapLabel}"  
+                Priority="0" Order="Secondary"/>
+        <ToolbarItem Text ="{i18n:Translate HoraryLabel}"  
+              Priority="1" Order="Secondary"/>
+        <ToolbarItem Text ="{i18n:Translate ReservationLabel}"  
+              Priority="1" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+            Padding="9,10,9,0" 
+            BindingContext="{Binding Cart}">
+                <ListView
+                BackgroundColor="#e8edd7"
+                HasUnevenRows="true" 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding Cart}"
+                ItemSelected="Handle_ItemSelected"
+                SeparatorVisibility="Default"
+                RefreshCommand="{Binding RefreshCommand}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid
+                                    Margin="0,0,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition />
+                                      
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout
+                                            Grid.Row="0"
+                                            Margin="3,0,0,0"
+                                            Orientation="Horizontal">
+
+                                        <Label 
+                                            Text="ID:"
+                                            Margin="3,7,0,0"
+                                            FontSize="Micro"
+                                            TextColor="Black"/>
+                                        <Label
+                                            Margin="-2,7,0,0"
+                                            FontAttributes="Bold"                                            
+                                            Text="{Binding OrderID, Mode=TwoWay}"
+                                            TextColor="#b7295a"
+                                            FontSize="Micro">
+                                        </Label>
+                                    </StackLayout>
+
+                                    <StackLayout 
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Margin="40,0,0,0"
+                                        VerticalOptions="Center">
+                                        <Image
+                                        Margin="4,0,0,0"
+                                        HeightRequest="30"
+                                        Source="car.png"
+                                        WidthRequest="50">
+                                        </Image>
+                                    </StackLayout>
+                                    <Label 
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Margin="10,15,0,0"
+                                            Text="{Binding DateOrder, Mode=TwoWay}"
+                                            TextColor="#b7295a"
+                                            FontSize="Default"
+                                            FontAttributes="Bold">
+                                    </Label>
+                                    <Image 
+                                         Grid.Row="1"
+                                        Grid.Column="2"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        Margin="0,0,0,20"
+                                        HorizontalOptions="End"                                          
+                                        Source="ChevronNaranja.png">
+                                    </Image>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             xmlns:i18n="clr-namespace:smileRed25.Helpers" 
+             BackgroundColor ="#f3463a"
+             x:Class="smileRed25.Views.CartPageDescription"
+             Title="">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="T1"
+                Clicked= "ClikedBarCart"
+                Priority="1" Order="Primary"/>
+        <ToolbarItem x:Name="T2"
+                 Clicked= "ClikedBarCart2"
+                Priority="0" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+            Padding="9,10,9,0" 
+            BindingContext="{Binding CartDescription}">
+                <Frame
+                    Margin="0,0,0,-6"
+                    BackgroundColor="#e8edd7">
+                    <Label 
+                   Margin="0,0,0,0"
+                   HorizontalOptions="Center"
+                   Text="Seu Pedido"
+                   TextColor="#b7295a"
+                   FontSize="Large"
+                   FontAttributes="Bold"
+                   BackgroundColor="#e8edd7"/>
+                </Frame>
+                <ScrollView>
+                <ListView
+                HeightRequest="275"
+                BackgroundColor="#e8edd7"
+                HasUnevenRows="true" 
+                IsPullToRefreshEnabled="true"
+                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
+                ItemsSource="{Binding CartDescription}"
+                ItemSelected="Handle_ItemSelected"
+                SeparatorVisibility="Default"
+                RefreshCommand="{Binding RefreshCommand}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid
+                                    Margin="0,0,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout 
+                                        Margin="5,0,0,0"
+                                        Orientation="Horizontal">
+                                        <Image
+                                        Grid.Row="0"
+                                        Grid.Column="0"    
+                                        Margin="4,0,0,0"
+                                        HeightRequest="30"
+                                        Source="FoodDrink.png"
+                                        WidthRequest="50">
+                                        </Image>
+                                            <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="10,7,0,0"
+                                            Text="{Binding Quantity, Mode=TwoWay}"
+                                            TextColor="#b7295a"
+                                            FontSize="Default"
+                                            FontAttributes="Bold"
+                                            />
+                                            <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="2"
+                                            Margin="0,7,0,0"
+                                            Text="x"
+                                            TextColor="#b7295a"
+                                            FontSize="Default"
+                                            FontAttributes="Bold"/>
+                                            <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="3"
+                                            Margin="0,7,0,0"
+                                            Text="{Binding Description, Mode=TwoWay}"
+                                            TextColor="#b7295a"
+                                            FontSize="Default"
+                                            FontAttributes="Bold"></Label>
+                                            <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="4"
+                                            HorizontalOptions="End"
+                                            Margin="0,7,0,0"
+                                            Text="{Binding VATFormat, Mode=TwoWay}"
+                                            TextColor="#b7295a"
+                                            FontSize="Default"
+                                            FontAttributes="Bold"/>
+                                            <Label 
+                                            Grid.Row="0"
+                                            Grid.Column="5"
+                                            Margin="5,7,0,0"
+                                            HorizontalOptions="End"
+                                            Text="{Binding PriceFormat, Mode=TwoWay}"
+                                            TextColor="#ef982b"
+                                            FontSize="Default"
+                                            FontAttributes="Bold"
+                                                /> 
+                                        </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                    </ScrollView>
+                <StackLayout
+                    Padding="0,0,0,9"
+                        >
+                    
+                    <Grid
+                        Margin="0,-6,0,0"
+                        HeightRequest="50"
+                        BackgroundColor="#fcdad7">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="10,13,0,0"
+                            Text="Total"
+                            TextColor="Black"
+                            FontAttributes="Bold"   
+                            />
+                        <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,13,20,0"
+                                Text="{Binding PriceQuantity, Mode=TwoWay}"
+                                TextColor="Black"
+                                FontAttributes="Bold" 
+                                HorizontalTextAlignment="End"                            
+                                />
+                    </Grid>
+                    <Grid
+                        Margin="0,-6,0,0"
+                        HeightRequest="50"
+                        BackgroundColor="#fab5b0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="10,13,0,0"
+                                Text="TOTAL (+iva) "
+                                 TextColor="#b7295a"
+                                FontAttributes="Bold" 
+                                FontSize="Default"/>
+                        <Label
+                                 Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="158,13,20,0"
+                                Text="{Binding PriceVATQuantity, Mode=TwoWay}"
+                                TextColor="#b7295a"
+                                FontAttributes="Bold" 
+                                FontSize="Default"
+                            HorizontalTextAlignment="End"/>
+                    </Grid>
+                </StackLayout>
+                <Button 
+                       Margin="0,-15,0,0"
+                       HeightRequest="50"
+                       Command="{Binding EndOrderCommand}"
+                       Text="FINALIZANDO PEDIDO"                                                            
+                       IsEnabled="{Binding IsEnabled, Mode=TwoWay}" 
+                       BackgroundColor="#FFC300" 
+                       TextColor="White"                                                           
+                       FontFamily="Enriqueta" 
+                       FontAttributes="Bold" 
+                       FontSize="17"
+                       BorderRadius="0"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

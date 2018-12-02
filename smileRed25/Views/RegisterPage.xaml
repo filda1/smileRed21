@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="smileRed25.Views.RegisterPage"
+             xmlns:controls1="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}" 
+             xmlns:i18n="clr-namespace:smileRed25.Helpers"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True"
+             BackgroundColor="#dd1021"
+             Title="{i18n:Translate Register3}">
+
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding Register}">
+            <AbsoluteLayout>
+                <StackLayout
+             Padding="29,30,29,10"
+                AbsoluteLayout.LayoutBounds="0,0,1,1" 
+                 AbsoluteLayout.LayoutFlags="All">
+                    <controls1:CircleImage 
+                BorderThickness="1"        
+                Aspect="AspectFit"
+                Source="{Binding ImageSource}"
+                BorderColor="#FFC300">
+                        <controls1:CircleImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeImageCommand}" />
+                        </controls1:CircleImage.GestureRecognizers>
+                        <controls1:CircleImage.WidthRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android">80</On>
+                                <On Platform="iOS">50</On>
+                            </OnPlatform>
+                        </controls1:CircleImage.WidthRequest>
+                        <controls1:CircleImage.HeightRequest>
+                            <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="Android">80</On>
+                                <On Platform="iOS">50</On>
+                            </OnPlatform>
+                        </controls1:CircleImage.HeightRequest>
+                    </controls1:CircleImage>
+                    <Grid Margin="0,15,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Text="{i18n:Translate FirstNameLabel}"
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"      
+                   Text ="{Binding FirstName, Mode=TwoWay}"
+                   TextColor="Black">
+                        </Entry>
+                        <Label
+                   Grid.Column="0"
+                   Grid.Row="1"
+                   Text="{i18n:Translate LastNameLabel}" 
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="1"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"       
+                   Text ="{Binding LastName, Mode=TwoWay}"
+                   TextColor="Black">
+                        </Entry>
+                        <Label
+                   Grid.Column="0"
+                   Grid.Row="2"
+                   Text="{i18n:Translate EMail}" 
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                   Keyboard="Email"
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"       
+                   Text ="{Binding Email, Mode=TwoWay}"
+                   TextColor="Black">
+                        </Entry>
+                        <Label
+                   Grid.Column="0"
+                   Grid.Row="3"
+                   Text="{i18n:Translate PhoneLabel}" 
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                   Keyboard="Telephone"        
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="3"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"       
+                   Text ="{Binding Telephone, Mode=TwoWay}"
+                   TextColor="Black">
+                        </Entry>
+                        <Label
+                   Grid.Column="0"
+                   Grid.Row="4"
+                   Text="{i18n:Translate Password}" 
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                   IsPassword="True"
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="4"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"       
+                   Text ="{Binding Password, Mode=TwoWay}"
+                   TextColor="Black">
+                        </Entry>
+                        <Label
+                   Grid.Column="0"
+                   Grid.Row="5"
+                   Text="{i18n:Translate ConfirmLabel}" 
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                   IsPassword="True"
+                   BackgroundColor="White"
+                   Grid.Column="1"
+                   Grid.Row="5"
+                   Placeholder=""
+                   PlaceholderColor="#bababa"       
+                   Text ="{Binding Confirm, Mode=TwoWay}"
+                   TextColor="Black">
+                        </Entry>
+                    </Grid>
+                    <StackLayout
+                  Padding="0,4,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="7*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button
+                    Grid.Column="0"   
+                    BackgroundColor="#c60e1d"                   
+                    Command="{Binding AddressCommand}"
+                    HeightRequest="45"
+                    IsEnabled="{Binding IsEnable,Mode=TwoWay}"                 
+                    Text="{i18n:Translate AddressLabel}"  
+                    TextColor="Black"/>
+                            <Label 
+                    Margin="4,0,0,0"                 
+                    Grid.Column="1"   
+                     Text="{i18n:Translate Or}" 
+                    TextColor="Black"
+                    VerticalOptions="Center"/>
+                            <Button
+                    x:Name="ButtonMaps"
+                    Grid.Column="2"    
+                    BackgroundColor="#c60e1d"                   
+                    Command="{Binding MapsCommand}"
+                    HeightRequest="45"
+                    IsEnabled="{Binding IsEnable,Mode=TwoWay}"                 
+                    Text="{i18n:Translate GeolocationLabel}"
+                    TextColor="Black"
+                    Image="maps2.png" />
+                        </Grid>
+                        <ScrollView>
+                            <Label
+                    x:Name="PlaceLabel"
+                    BackgroundColor="#c60e1d"      
+                    Text ="{Binding PlaceLabel, Mode=TwoWay}"
+                    TextColor="Black"
+                    VerticalOptions="Center">
+                            </Label>
+                        </ScrollView>
+                        <Entry                 
+                   BackgroundColor="White"                   
+                   Placeholder="{i18n:Translate AddressReference}"                            
+                   PlaceholderColor="#bababa"       
+                   Text ="{Binding Location, Mode=TwoWay}"
+                   TextColor="Black">
+                        </Entry>
+                    </StackLayout>
+                    <Button
+                    BackgroundColor="Orange"                   
+                    Command="{Binding RegisterCommand}"
+                    HeightRequest="55"
+                    IsEnabled="{Binding IsEnable,Mode=TwoWay}"                 
+                    Text="{i18n:Translate Ok}" 
+                    TextColor="White">
+                    </Button>
+                </StackLayout>
+                <ActivityIndicator
+                    AbsoluteLayout.LayoutBounds=".5,.5,.5,.5" 
+                    AbsoluteLayout.LayoutFlags="All"
+                    IsRunning="{Binding IsRunning, Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand"
+                    Color="BlueViolet">
+                </ActivityIndicator>
+            </AbsoluteLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
