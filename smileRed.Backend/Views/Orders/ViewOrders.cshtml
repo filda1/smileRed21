@@ -1,0 +1,98 @@
+﻿@model IEnumerable<smileRed.Backend.Models.ProductsOrders>
+@{
+    /**/
+
+    ViewBag.Title = "ViewOrders";
+}
+<h2>Orders<span class="badge badge-secondary">New : @ViewBag.TEST</span></h2>
+@Html.Raw(TempData["msg"])
+<meta http-equiv="refresh" content="30">
+<h4 class="text-danger">( @ViewBag.Count )</h4>
+<h5 alignt="right"> @ViewBag.TIMEZONE</h5>
+<div class="table-responsive">
+    <div></div><div></div>
+    <table class="table table-bordered ">
+        <tr class="active">
+            <th>
+                @Html.DisplayNameFor(model => model.OrderID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Value)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOrder)
+            </th>
+         
+            <th>
+                @Html.DisplayNameFor(model => model.Ingredients)
+            </th>
+            <th>
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Image)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceVATQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ingredients)
+            </td>
+            <td>
+                @Html.ActionLink("Hide", "DeleteAllOrders", new { id = item.OrderID }) |
+                @Html.ActionLink("Details", "DetailsAllOrders", new { id = item.OrderID })
+            </td>
+        </tr>
+        }
+    </table>
+    </br>
+    <p><h6>Note: To activate again the record go to Orders, and place Hide ☐)</h6></p>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Sound/blip.wav")
+}
